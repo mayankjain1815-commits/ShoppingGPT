@@ -1,0 +1,6 @@
+__pycache__
+.env
+models/opendaisy/
+*.bin
+*.pt
+*.pth
