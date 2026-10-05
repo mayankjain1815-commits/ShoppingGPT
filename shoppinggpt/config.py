@@ -1,20 +1,22 @@
 # config.py
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
+# Repository root (parent of the shoppinggpt package directory)
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # Load environment variables
-load_dotenv(r"E:\chatbot\ShoppingGPT\.env")
+load_dotenv(BASE_DIR / ".env")
 
 # API Keys
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 # Paths
-DATA_PRODUCT_PATH = r"E:\chatbot\ShoppingGPT\data\products.db"
-DATA_TEXT_PATH = r"E:\chatbot\ShoppingGPT\data\policy.txt"
-STORE_DIRECTORY = r"E:\chatbot\ShoppingGPT\data\datastore"
+DATA_PRODUCT_PATH = str(BASE_DIR / "data" / "products.db")
+DATA_TEXT_PATH = str(BASE_DIR / "data" / "policy.txt")
+STORE_DIRECTORY = str(BASE_DIR / "data" / "datastore")
 
 # Embeddings
-load_dotenv(r"E:\chatbot\ShoppingGPT\.env")
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 EMBEDDINGS = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
